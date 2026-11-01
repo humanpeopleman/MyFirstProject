@@ -371,10 +371,11 @@ GameObject:
   m_Component:
   - component: {fileID: 671249390}
   - component: {fileID: 671249389}
-  - component: {fileID: 671249388}
   - component: {fileID: 671249391}
-  - component: {fileID: 671249392}
   - component: {fileID: 671249393}
+  - component: {fileID: 671249388}
+  - component: {fileID: 671249392}
+  - component: {fileID: 671249394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -554,6 +555,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &671249394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671249387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70e10ed86a98ed46916db9d6ffe50ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
 --- !u!1 &1850809299
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,9 +577,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1850809302}
   - component: {fileID: 1850809301}
-  - component: {fileID: 1850809300}
   - component: {fileID: 1850809304}
   - component: {fileID: 1850809305}
+  - component: {fileID: 1850809300}
+  - component: {fileID: 1850809306}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -734,6 +748,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1850809306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850809299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e6b79d7fec7354485dd7b649400cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
