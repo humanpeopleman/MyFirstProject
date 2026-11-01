@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 
 public class PlayerHealth : MonoBehaviour
 {
     private float maxHealth = 100.0f;
     private float health;
 
-    private bool isDead = false;
+    public bool isDead = false;
     private float nextDamageTime = 0f;
     private float damageInterval = 1.0f;
     private void Start()
@@ -16,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isDead && collision.gameObject.CompareTag("Enemy") && Time.time >= nextDamageTime)
         {
-            health -= 10.0f;
+            health = health - 10.0f >= 0 ? health - 10.0f : 0;
             Debug.Log(10 + "만큼의 피해!\t" + "현재 체력 : " + health);
             if (health <= 0)
             {
