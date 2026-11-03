@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isDead && collision.gameObject.CompareTag("Enemy") && Time.time >= nextDamageTime)
         {
-            takeDamage();
+            TakeDamage();
         }
     }
     private void TakeDamage(float damage = 10f)
