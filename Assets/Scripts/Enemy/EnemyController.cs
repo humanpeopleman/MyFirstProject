@@ -20,12 +20,9 @@ public class EnemyController : MonoBehaviour
         }
         target = player.transform;
     }
-    void Update()
-    {
-        movement = (target.position - transform.position).normalized;
-    }
     void FixedUpdate()
     {
+        movement = (target.position - transform.position).normalized;
         // Vector2 기준으로 다음 프레임에 도달할 목적지 좌표 계산
         Vector2 nextPosition = rb.position + movement * speed * Time.fixedDeltaTime;
 
