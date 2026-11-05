@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     {
         if (playerExp != null)
             playerExp.OnExperienceChanged += UpdateExperienceUI;
+        if (playerExp == null)
+            return;
         expSlider.value = playerExp.CurrentExp;
         levelText.text = "LEVEL : " + playerExp.Level;
     }
