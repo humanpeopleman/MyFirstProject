@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
         if (spawnTimer >= spawnInterval)
         {
             spawnTimer -= spawnInterval;
-            spawnEnemy();
+            SpawnEnemy();
         }
     }
     private void SpawnEnemy()
