@@ -1,9 +1,29 @@
 ﻿using UnityEngine;
+using System;
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth pH;
-    private GameState currentState = GameState.Playing;
+    [SerializeField] private PlayerHealth pH; //플레이어 사망 확인을 위해서 사용
+
+    private GameState currentState = GameState.Playing; //현재 게임 상태
+
     [SerializeField] private UIManager uIManager;
+
+    private float checkTime = 1f;
+    private float survivalTime = 0;
+    public float SurvivalTime => survivalTime;
+    public event Action<float> OnSurvivalTimeChanged;
+    private void Update()
+    {
+        if (currentState == GameState.Playing)
+        {
+            survivalTime += Time.deltaTime;
+            if (survivalTime >= checkTime)
+            {
+                checkTime += 1;
+                OnSurvivalTimeChanged?.Invoke(survivalTime);
+            }
+        }
+    }
     private void Awake()
     {
         if (pH != null)

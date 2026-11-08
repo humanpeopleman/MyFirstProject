@@ -4,15 +4,16 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform player;
+
     [SerializeField] private float spawnInterval = 3f;
     private float spawnTimer = 0f;
     [SerializeField] private float spawnRadius = 8f;
     [SerializeField] private int maxEnemies = 10;
-    private float survivalTime = 0f;
+
+    [SerializeField] private GameManager gameManager;
     void Update()
     {
         spawnTimer += Time.deltaTime;
-        survivalTime += Time.deltaTime;
         UpdateDifficulty();
         if (spawnTimer >= spawnInterval)
         {
@@ -31,6 +32,6 @@ public class EnemySpawner : MonoBehaviour
     }
     private void UpdateDifficulty()
     {
-        spawnInterval = Mathf.Max(1f, 3f - (survivalTime / 30f) * 0.5f);
+        spawnInterval = Mathf.Max(1f, 3f - (gameManager.SurvivalTime / 30f) * 0.5f);
     }
 }
