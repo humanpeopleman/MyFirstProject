@@ -1,6 +1,7 @@
 ﻿public enum GameState
 {
     Playing,
-    GameOver
+    GameOver,
+    LevelUp
 }
 

@@ -4,18 +4,18 @@ using UnityEngine;
 public class PlayerExperience : MonoBehaviour
 {
     private float currentExp = 0, requiredExp = 100;
-    private int level = 1;
     public float CurrentExp => currentExp;
     public float RequiredExp => requiredExp;
+    private int level = 1;
     public int Level => level;
-    public event Action OnExperienceChanged;
+    public event Action<float, int> OnExperienceChanged;
+    public event Action<int> OnLevelUp;
     public void AddExp(int amount)
     {
         currentExp += amount;
         while (CheckLevelUp())
             LevelUp();
-        OnExperienceChanged?.Invoke();
-        Debug.Log("현재 경험치 : " + currentExp + " 현재 레벨 : " + level);
+        OnExperienceChanged?.Invoke(currentExp, level);
     }
     private bool CheckLevelUp()
     {
@@ -25,5 +25,7 @@ public class PlayerExperience : MonoBehaviour
     {
         level++;
         currentExp -= requiredExp;
+
+        OnLevelUp?.Invoke(level);
     }
 }

@@ -42,6 +42,14 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+    public void IncreaseDamage(float amount)
+    {
+        attackDamage += amount;
+    }
+    public void ReduceCooldown(float amount)
+    {
+        attackCooldown = Mathf.Max(0.05f, attackCooldown - amount);
+    }
     private void OnDrawGizmosSelected()
     {
         // 기즈모 색상을 빨간색으로 설정

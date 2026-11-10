@@ -30,4 +30,9 @@ public class PlayerHealth : MonoBehaviour
         }
         nextDamageTime = Time.time + damageInterval;
     }
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        health += amount;
+    }
 }
