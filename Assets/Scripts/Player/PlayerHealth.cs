@@ -4,11 +4,16 @@ using System;
 public class PlayerHealth : MonoBehaviour
 {
     private float maxHealth = 100.0f, health;
+    public float MaxHealth => maxHealth;
+    public float Health => health;
+    public event Action<float, float> OnHealthChanged;
+
     private bool isDead = false;
     public bool IsDead => isDead;
-    private float nextDamageTime = 0f, damageInterval = 1.0f; //공격 받기
     public event Action OnPlayerDead;
-    private void Start()
+
+    private float nextDamageTime = 0f, damageInterval = 1.0f; //공격 받기
+    private void Awake()
     {
         health = maxHealth;
     }
@@ -22,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     private void TakeDamage(float damage = 10f)
     {
         health = Mathf.Max(0, health - damage);
-        Debug.Log(damage + "만큼의 피해!\t" + "현재 체력 : " + health);
+        OnHealthChanged?.Invoke(maxHealth, health);
         if (health <= 0)
         {
             isDead = true;
@@ -34,5 +39,6 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth += amount;
         health += amount;
+        OnHealthChanged?.Invoke(maxHealth, health);
     }
 }

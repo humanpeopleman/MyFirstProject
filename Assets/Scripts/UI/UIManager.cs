@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerExperience playerExp;
     [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private PlayerHealth playerHealth;
 
     //UI 오브젝트 가져오기
     [SerializeField] private GameObject gameOverPanel;
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private GameObject upgradePanel;
+    [SerializeField] private Slider healthSlider;
     //게임오버 패널 켜기
     public void ShowGameOver()
     {
@@ -41,6 +43,11 @@ public class UIManager : MonoBehaviour
         int sec = Mathf.FloorToInt(time % 60);
         timeText.text = $"{min:00}:{sec:00}";
     }
+    private void UpdateHealthSlider(float maxHealth, float health)
+    {
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
+    }
 
     //스탯 업그레이드 패널 켜기
     public void ShowUpgradePanel()
@@ -57,20 +64,21 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         if (gameManager != null)
+        {
             gameManager.OnSurvivalTimeChanged += UpdateTimeText;
+            timeText.text = "00:00";
+        }
         if (playerExp != null)
         {
             playerExp.OnExperienceChanged += UpdateExperienceUI;
-        }
-
-        if (playerExp != null)
-        {
             expSlider.value = playerExp.CurrentExp;
             levelText.text = "LEVEL : " + playerExp.Level;
         }
-        if (gameManager != null)
+        if (playerHealth != null)
         {
-            timeText.text = "00:00";
+            playerHealth.OnHealthChanged += UpdateHealthSlider;
+            healthSlider.maxValue = playerHealth.MaxHealth;
+            healthSlider.value = playerHealth.Health;
         }
     }
     private void OnDisable()
@@ -78,8 +86,8 @@ public class UIManager : MonoBehaviour
         if (gameManager != null)
             gameManager.OnSurvivalTimeChanged -= UpdateTimeText;
         if (playerExp != null)
-        {
             playerExp.OnExperienceChanged -= UpdateExperienceUI;
-        }
+        if (playerHealth != null)
+            playerHealth.OnHealthChanged -= UpdateHealthSlider;
     }
 }
