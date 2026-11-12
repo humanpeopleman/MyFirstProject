@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameState.GameOver) return;
         currentState = GameState.GameOver;
-        Debug.Log("---게임 오버---");
         Time.timeScale = 0f;
         UIManager.ShowGameOver();
     }

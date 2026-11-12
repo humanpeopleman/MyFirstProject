@@ -15,7 +15,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead) return;
         health = Mathf.Max(0, health - damage);
-        Debug.Log("적에게 " + damage + "만큼의 피해!");
         if (health <= 0) {
             isDead = true;
             Instantiate(expOrb, transform.position, Quaternion.identity);
