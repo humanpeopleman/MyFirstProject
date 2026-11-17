@@ -39,9 +39,22 @@ Unity와 C#으로 개발한 2D 탑다운 서바이벌 게임입니다.
 
 
 ## 스크린샷
-<img width="300" height="643" alt="Upgrade" src="https://github.com/user-attachments/assets/5a368f56-8826-4100-954e-3aa455a7a923" />
-<img width="300" height="643" alt="Gameplay" src="https://github.com/user-attachments/assets/b865b84a-452f-4a21-a994-be6a675bb4c1" />
-<img width="300" height="643" alt="GameOver" src="https://github.com/user-attachments/assets/12bf981b-0945-4a5c-a265-223a50cfe6a8" />
+<table>
+  <tr>
+    <td align="center">
+      <b>Gameplay</b><br>
+      <img src="Screenshots/Gameplay.png" width="250">
+    </td>
+    <td align="center">
+      <b>Upgrade</b><br>
+      <img src="Screenshots/Upgrade.png" width="250">
+    </td>
+    <td align="center">
+      <b>Game Over</b><br>
+      <img src="Screenshots/GameOver.png" width="250">
+    </td>
+  </tr>
+</table>
 
 ## 플레이 영상 링크
 https://youtube.com/shorts/5b5vIqf9tYc?feature=share
